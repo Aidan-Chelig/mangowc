@@ -2652,7 +2652,10 @@ bool parse_option(Config *config, char *key, char *value) {
 		parse_config_file(config, value, false);
 	} else if (strncmp(key, "source", 6) == 0) {
 		parse_config_file(config, value, true);
-	} else {
+	} else if (key[0] == '#') {
+      return true;
+  }
+  else {
 		fprintf(stderr,
 				"\033[1m\033[31m[ERROR]:\033[33m Unknown keyword: "
 				"\033[1m\033[31m%s\n",
